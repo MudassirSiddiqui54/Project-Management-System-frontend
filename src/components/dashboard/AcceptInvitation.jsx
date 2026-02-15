@@ -30,7 +30,7 @@ export default function AcceptInvitation() {
 			const projectId = searchParams.get("project");
 
 			const response = await fetch(
-				`http://localhost:8000/api/v1/projects/${projectId}/invitations/accept/${token}`,
+				`https://project-management-system-8kdf.onrender.com/api/v1/projects/${projectId}/invitations/accept/${token}`,
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
