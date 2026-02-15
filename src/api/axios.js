@@ -11,7 +11,7 @@
 // }
 // const result = await res.json();      <---- like this___|^|
 import axios from "axios";
-
+console.log('🔍 REACT_APP_API_URL at build time:', process.env.REACT_APP_API_URL);
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL || "http://localhost:8000/api/v1",
     withCredentials: true, //“If my backend uses cookies (refresh tokens), include them.”
@@ -19,5 +19,6 @@ const api = axios.create({
         "Content-type": "application/json"
     }
 });
+console.log('🔍 Final baseURL:', api.defaults.baseURL);
 
 export default api;
