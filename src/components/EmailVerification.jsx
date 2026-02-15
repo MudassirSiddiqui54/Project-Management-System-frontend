@@ -13,7 +13,7 @@ export default function VerifyEmail() {
 		const verify = async () => {
 			try {
 				const res = await fetch(
-					`http://localhost:8000/api/v1/auth/verify-email/${token}`,
+					`https://project-management-system-8kdf.onrender.com/api/v1/auth/verify-email/${token}`,
 					{
 						method: "GET",
 					}
