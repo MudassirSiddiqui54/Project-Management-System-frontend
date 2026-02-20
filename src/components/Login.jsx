@@ -28,14 +28,17 @@ export default function Login() {
 		setLoading(true);
 
 		try {
+			console.log('Login URL:', process.env.REACT_APP_API_URL + '/auth/login');
 			const response = await loginApi({ email, password });
 			login(response.data.data);
 			setNeedsVerification(false);
 			setError("");
 			window.location.href = "/dashboard";
 		} catch (err) {
-			console.log("LOGIN ERROR RAW:", err);
-			console.log("LOGIN ERROR RESPONSE:", err.response);
+			  console.log('LOGIN ERROR OBJECT:', err);
+  console.log('Error config:', err.config); // Shows the request that failed
+  console.log('Error response:', err.response);
+  console.log('Error request:', err.request); // XMLHttpRequest object
 			const status = err.response?.status;
 			const message = err.response?.data?.message;
 
