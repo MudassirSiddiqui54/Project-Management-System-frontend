@@ -29,7 +29,18 @@ export default function Login() {
 
 		try {
 			console.log('Login URL:', process.env.REACT_APP_API_URL + '/auth/login');
-			const response = await loginApi({ email, password });
+			const response = await fetch(
+  `${process.env.REACT_APP_API_URL}/auth/login`,
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+    credentials: 'include'
+  }
+);
+const data = await response.json();
+if (!response.ok) throw new Error(data.message);
+// then call login(data.data)
 			login(response.data.data);
 			setNeedsVerification(false);
 			setError("");
